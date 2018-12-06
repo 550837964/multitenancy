@@ -27,7 +27,17 @@ import org.springframework.context.annotation.Configuration;
  * {@link org.springframework.boot.autoconfigure.jdbc.DataSourceProperties}
  * objects, with each instance containing the data source details about the
  * database like url, username, password etc
- * 
+ *
+ * 在配置文件application.yml中定义了租户数据库的数据源
+ * 租户数据库（们）应当能够被应用程序代码使用，所以在这里进行注入
+ *
+ * 这个类使用了@ConfigurationProperties备注
+ * 用于从配置文件application.yml中，解析multitenancy.mtapp节点下的属性
+ *
+ * 这个节点下的属性，即连接的两个（或者多个）数据库的链接用户名密码等
+ *
+ * 注入这个类之后，可以直接通过这个类获取所有的租户id
+ *
  * @author Sunit Katkar
  * @version 1.0
  * @since 1.0 (April 2018)
