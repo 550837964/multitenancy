@@ -17,13 +17,13 @@ multitenancy:
     dataSources: 
       -
         tenantId: tenant_1 
-        url: jdbc:mysql://localhost:3306/dbtenant1?useSSL=false 
-        username: tenant1 
-        password: admin123 
+        url: jdbc:mysql://localhost:13306/dbtenant1?useSSL=false
+        username: root
+        password: root
         driverClassName: com.mysql.jdbc.Driver 
       -
         tenantId: tenant_2
-        url: jdbc:mysql://localhost:3306/dbtenant2?useSSL=false
-        username: tenant1
-        password: admin123
+        url: jdbc:mysql://localhost:13306/dbtenant2?useSSL=false
+        username: root
+        password: root
         driverClassName: com.mysql.jdbc.Driver        
