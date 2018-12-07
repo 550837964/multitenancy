@@ -61,11 +61,18 @@ public class MultiTenancyJpaConfiguration {
     @Autowired
     private JpaProperties jpaProperties;
 
+    /**
+     * 注入MultitenancyProperties，从而获取所有租户数据
+     */
     @Autowired
     private MultitenancyProperties multitenancyProperties;
 
     /**
      * Builds a map of all data sources defined in the application.yml file
+     *
+     * 将 通过配置文件application.yml创建的所有数据库 建立连接，并存入一个map中返回
+     *
+     * 这个map用于通过租户标识符选择租户数据库，然后让hibernate与对应数据库建立连接
      * 
      * @return
      */

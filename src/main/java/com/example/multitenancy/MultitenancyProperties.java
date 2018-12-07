@@ -36,7 +36,12 @@ import org.springframework.context.annotation.Configuration;
  *
  * 这个节点下的属性，即连接的两个（或者多个）数据库的链接用户名密码等
  *
- * 注入这个类之后，可以直接通过这个类获取所有的租户id
+ * 注入这个类之后，可以直接通过这个类获取所有的租户数据
+ *
+ * 租户数据不只是id，只有因为租户id是额外添加的所以需要专门增加一个get
+ *
+ * 其他的getter & setter 在类{@link DataSourceProperties}继承的
+ * {@link org.springframework.boot.autoconfigure.jdbc.DataSourceProperties}中已经写好了
  *
  * @author Sunit Katkar
  * @version 1.0
