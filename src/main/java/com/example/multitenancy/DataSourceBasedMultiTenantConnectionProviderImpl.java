@@ -27,7 +27,11 @@ import org.springframework.stereotype.Component;
 /**
  * This class does the job of selecting the correct database based on the tenant
  * id found by the {@link CurrentTenantIdentifierResolverImpl}
- * 
+ *
+ * 用于根据租户id获取数据库
+ *
+ * 或者获取所有数据库
+ *
  * @author Sunit Katkar
  * @version 1.0
  * @since 1.0 (April 2018)
@@ -48,6 +52,14 @@ public class DataSourceBasedMultiTenantConnectionProviderImpl
      * AbstractDataSourceBasedMultiTenantConnectionProviderImpl#selectAnyDataSource(
      * )
      */
+
+    /**
+     * 获取配置文件中的
+     *
+     * 第一个数据库？？？
+     *
+     * @return
+     */
     @Override
     protected DataSource selectAnyDataSource() {
         return this.dataSourcesMtApp.values().iterator().next();
@@ -59,6 +71,9 @@ public class DataSourceBasedMultiTenantConnectionProviderImpl
      * @see org.hibernate.engine.jdbc.connections.spi.
      * AbstractDataSourceBasedMultiTenantConnectionProviderImpl#selectDataSource(
      * java.lang.String)
+     */
+    /**
+     * 获取指定租户id对应的数据库
      */
     @Override
     protected DataSource selectDataSource(String tenantIdentifier) {
