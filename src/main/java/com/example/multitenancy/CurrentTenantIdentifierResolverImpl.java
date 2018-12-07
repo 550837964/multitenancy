@@ -26,7 +26,12 @@ import com.example.util.TenantContextHolder;
  * Hibernate needs to know which database to use i.e. which tenant to connect
  * to. This class provides a mechanism to provide the correct datasource at run
  * time.
- * 
+ *
+ * 这个类用于标识租户，由于在这个应用中租户id是存储在ThreadLocal中的
+ * 所以这个类的作用就是从ThreadLocal取出租户id，让hibernate能够根据这个租户id连接到正确的数据库
+ *
+ * ThreadLocal 线程局部变量
+ *
  * @see {@link com.example.util.TenantContextHolder}
  * @see {@link com.example.security.CustomAuthenticationFilter}
  * 
@@ -44,6 +49,15 @@ public class CurrentTenantIdentifierResolverImpl implements CurrentTenantIdentif
      * 
      * @see org.hibernate.context.spi.CurrentTenantIdentifierResolver#
      * resolveCurrentTenantIdentifier()
+     */
+
+    /**
+     * 从当前线程局部变量ThreadLocal中获取租户id
+     * 租户id在{@link com.example.security.CustomAuthenticationFilter}被添加到线程局部变量中
+     *
+     * 如果当前的线程局部变量没有存入租户id，则使用默认的"tenant_1"作为租户id
+     *
+     * @return
      */
     @Override
     public String resolveCurrentTenantIdentifier() {
